@@ -26,7 +26,7 @@ Create an empty directory and put a file `playbook.js` right there with:
     # for linux
     docker run --add-host=host.docker.internal:host-gateway --rm -v `pwd`:/work -it turbobert/opendcx
 
-If you're running Apple Silicon the initial connection to the grid node will take at least 10 seconds due to selenium's images currently being only available for `linux/amd64` - emulation hits hard even on Apple Silicon.
+If you're running Apple Silicon the initial connection to the grid node will take at least 10 seconds due to selenium's images currently being only available for `linux/amd64` - emulation hits hard on performance even on Apple Silicon.
 
 Take a look at the `run-XXXXX...` folder that has emerged to see your test results.
 
