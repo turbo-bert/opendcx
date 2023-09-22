@@ -50,8 +50,12 @@ Take a look at the `run-XXXXX...` folder that has emerged to see your test resul
 
 # License
 
-# Known Issues
+# Known Issues / Restrictions
 
-## Selenium on Apple Silicon
+## Restriction: Firefox
+
+Currently I focus on compatibility with `firefox`.
+
+## Issue: Selenium on Apple Silicon
 
 Sadly `Selenium` doesn't provide `arm64` images for `grid` yet.
