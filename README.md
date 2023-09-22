@@ -7,7 +7,9 @@ So `OpenDCX` basically gives a text interface to selenium for "non-programmers".
 
 ## Goal
 
-Creating a utility for managing test cases / quality assurance `in-code` and without an evil vendor lock-in.
+* Creating a utility for managing test cases / quality assurance `in-code` and without an evil vendor lock-in.
+* If it turns out the mechanism is reliable enough - use it for no-API-available tasks that require more than a cocktail mixed from `curl`, `postman` and `requests`.
+
 
 # Quickstart
 
