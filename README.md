@@ -17,7 +17,7 @@ Let's just open google.com and that's it.
 
 You already should have installed+running Docker.
 
-Kickstart a selenium firefox instance into background by running...
+Kickstart a selenium firefox instance into background by running... (with `docker-compose` you can....)
 
     docker run --rm -d --name firefox --shm-size 2g -p 7900:7900 -p 4444:4444 $OPTS selenium/standalone-firefox:latest
 
