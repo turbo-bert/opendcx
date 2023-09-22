@@ -4,6 +4,11 @@ I had the idea for this a long time ago. To make it "pretty" enough, there's nev
 
 So `OpenDCX` basically gives a text interface to selenium for "non-programmers". All directives are written in JSON notation. All the logging pre and post test steps is automatically done for you and you can extend your test definition in some handy ways. It may not be perfect - but it makes things easier.
 
+
+## Goal
+
+Creating a utility for managing test cases / quality assurance `in-code` and without an evil vendor lock-in.
+
 # Quickstart
 
 Let's just open google.com and that's it.
