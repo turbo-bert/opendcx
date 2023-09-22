@@ -1,8 +1,8 @@
 # OpenDCX
 
-I had the idea for this a long time ago. To make it "pretty" enough, there's never enough time. So I made this my hobby...
+I had the idea for this a long time ago. To make it "pretty" enough, there's never enough time. So I made this in my free time. The name `DCX` derives from `daisy-chained-xpath` because when I was testing web application front ends it felt like going from xpath to xpath to xpath...
 
-OpenDCX basically gives an easy interface to selenium web testing for "non-programmers", it reads its directives from text/json defined commands and comes with some handy tools on the way to automation. It may not be perfect - but it makes things easier.
+So `OpenDCX` basically gives a text interface to selenium for "non-programmers". All directives are written in JSON notation. All the logging pre and post test steps is automatically done for you and you can extend your test definition in some handy ways. It may not be perfect - but it makes things easier.
 
 # Quickstart
 
