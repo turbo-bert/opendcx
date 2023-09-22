@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+# on linux, we need the internal host...
+uname | grep -i darwin >/dev/null 2>/dev/null
+mactest=$?
+OPTS="--add-host=host.docker.internal:host-gateway"
+if [[ $mactest = 0 ]]; then
+    OPTS=""
+fi
+
+
+if [[ $1 = "-v" ]]; then
+    docker run $OPTS --rm -v `pwd`:/work -it -e OPENDCX_VERBOSE=1 turbobert/opendcx
+else
+    docker run $OPTS --rm -v `pwd`:/work -it turbobert/opendcx
+fi
