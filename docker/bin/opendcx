@@ -10,8 +10,18 @@ if [[ $mactest = 0 ]]; then
 fi
 
 
+if [[ $1 = "google" ]]; then
+    if [[ ! -d google ]]; then
+        mkdir google
+        echo "{}" >google/env.js
+        echo '[["", "get", "https://www.google.de"]]' >google/playbook.js
+    fi
+    exit 0
+fi
+
 if [[ $1 = "-v" ]]; then
     docker run $OPTS --rm -v `pwd`:/work -it -e OPENDCX_VERBOSE=1 turbobert/opendcx
 else
     docker run $OPTS --rm -v `pwd`:/work -it turbobert/opendcx
 fi
+

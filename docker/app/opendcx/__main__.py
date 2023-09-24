@@ -25,9 +25,9 @@ class Context:
         self._playbookenv = '/work/env.js'
         self._playbookenv_data = None
         self._odir = '/work/run-%d' % (int) (time.time())
-        self._logfile_debug = os.path.join(self._odir, 'log_debug')
-        self._logfile_info = os.path.join(self._odir, 'log_info')
-        self._logfile_error = os.path.join(self._odir, 'log_error')
+        self._logfile_debug = os.path.join(self._odir, 'log_debug.txt')
+        self._logfile_info = os.path.join(self._odir, 'log_info.txt')
+        self._logfile_error = os.path.join(self._odir, 'log_error.txt')
         self._log_format = '%(asctime)s [%(levelname)-10s] %(message)s'
 
     def load(self) -> None:
