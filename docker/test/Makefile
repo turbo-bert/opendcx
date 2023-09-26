@@ -3,6 +3,9 @@ test:
 	make build
 	${HOME}/bin/opendcx -v
 
+tnb:
+	${HOME}/bin/opendcx -v
+
 build:
 	/bin/bash -c 'cd .. && bash DOCKER_BUILD.sh'
 

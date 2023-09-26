@@ -3,11 +3,5 @@
         "ed40356c-63ae-416b-b458-1ec449b5cd89",
         "get",
         "{{URL}}"
-    ],
-    [
-        "f0a17ffa-1d99-43ad-97c6-e9419ec26a5c",
-        "stor_get",
-        "a",
-        "initial_value_a"
     ]
 ]

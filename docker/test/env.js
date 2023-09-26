@@ -1,5 +1,5 @@
 {
-    "URL": "http://127.0.0.1:8080",
+    "URL": "http://host.docker.internal:8080",
     "MAIL": "robert.degen@mailbox.org",
     "USER": "admin",
     "PW": "foo123",
