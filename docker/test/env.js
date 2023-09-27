@@ -1,10 +1,3 @@
 {
-    "URL": "http://host.docker.internal:8080",
-    "MAIL": "robert.degen@mailbox.org",
-    "USER": "admin",
-    "PW": "foo123",
-    "DBNAME": "testdb",
-    "DBHOST": "host.docker.internal",
-    "DBUSER": "root",
-    "DBPW": "foo123"
+    "URL": "https://www.google.de"
 }

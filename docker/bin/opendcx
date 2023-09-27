@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+# note: absolutely imperfect - should process ALL options with getopts into env vars
+
 # on linux, we need the internal host...
 uname | grep -i darwin >/dev/null 2>/dev/null
 mactest=$?
@@ -21,6 +23,7 @@ fi
 
 if [[ $1 = "-v" ]]; then
     docker run $OPTS --rm -v `pwd`:/work -it -e OPENDCX_VERBOSE=1 turbobert/opendcx
+    #docker run $OPTS --rm -v `pwd`:/work -it -e OPENDCX_VERBOSE=1 -e OPENDCX_BROWSER=chrome turbobert/opendcx
 else
     docker run $OPTS --rm -v `pwd`:/work -it turbobert/opendcx
 fi
