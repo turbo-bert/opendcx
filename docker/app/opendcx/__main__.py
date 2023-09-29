@@ -252,6 +252,7 @@ class Context:
         logging.info("Generating HTML and ASCII reports...")
         subprocess.check_output("cd %s && %s 1>/dev/null 2>/dev/null; exit 0" % (os.path.join(self._odir, 'build', 'org'), 'emacs run.org --batch -f org-html-export-to-html --kill'), shell=True, universal_newlines=True)
         subprocess.check_output("cd %s && %s 1>/dev/null 2>/dev/null; exit 0" % (os.path.join(self._odir, 'build', 'org'), 'emacs run.org --batch -f org-ascii-export-to-ascii --kill'), shell=True, universal_newlines=True)
+        subprocess.check_output("cat %s >/work/run.txt; exit 0" % os.path.join(self._odir, 'build', 'org', 'run.txt'), shell=True, universal_newlines=True)
         logging.info("Generating HTML and ASCII reports... Done")
 
 
