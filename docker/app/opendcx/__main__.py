@@ -19,6 +19,19 @@ from selenium.webdriver.support.ui import Select as SEL
 from selenium.webdriver.support import expected_conditions as EC
 
 
+def json_load_support_line_comments(filename):
+    """Performs a return json.loads() from a file but leaves out // lines.
+    """
+    lines = []
+    with open(filename, 'r') as f:
+        lines = f.read().split("\n")
+    lines_actual = []
+    for line in lines:
+        if not line.strip().startswith("//"):
+            lines_actual.append(line)
+    return json.loads("\n".join(lines_actual))
+
+
 class Context:
 
     def __init__(self) -> None:
@@ -45,6 +58,12 @@ class Context:
         
         self._cmd_map['stor_env_load'] = self.exec_stor_env_load
         self._nofancy_map['stor_env_load'] = True
+
+        self._cmd_map['sleep'] = self.exec_sleep
+
+        self._cmd_map['refresh'] = self.exec_refresh
+        
+        self._cmd_map['press_return'] = self.exec_press_return
         
         self._step_index = 0
         self._orgfile = os.path.join(self._odir, 'build', 'org', 'run.org')
@@ -88,7 +107,7 @@ class Context:
             logging.debug("loading playbook")
             self._playbook_data = None
             try:
-                self._playbook_data = json.loads(open(self._playbook, 'r').read())
+                self._playbook_data = json_load_support_line_comments(filename=self._playbook)
             except Exception as e:
                 self.die_very_early(msg='JSON Playbook "%s" unparsable => %s' % (self._playbook.split('/')[-1], str(e)))
         else:
@@ -98,7 +117,7 @@ class Context:
             logging.debug("loading playbook env")
             self._playbookenv_data = None
             try:
-                self._playbookenv_data = json.loads(open(self._playbookenv, 'r').read())
+                self._playbookenv_data = json_load_support_line_comments(filename=self._playbookenv)
             except Exception as e:
                 self.die_very_early(msg='JSON Playbook --ENV-- "%s" unparsable => %s' % (self._playbookenv.split('/')[-1], str(e)))
 
@@ -169,6 +188,19 @@ class Context:
 
 
     def offyougo(self):
+        self.orga("* Comment/Description")
+        self.orga()
+
+        self.orga("#+begin_example")
+        lines = ["N/A"]
+        if os.path.isfile("/work/README"):
+            with open("/work/README", 'r') as f:
+                lines = f.read().strip().split("\n")
+        for line in lines:
+            self.orga(line)
+        self.orga("#+end_example")
+
+        self.orga()
         self.orga("""* Test run step by step""")
         self.orga()
         for step_data in context.stepwalker():
@@ -240,6 +272,52 @@ class Context:
 
     def exec_stor_env_load(self, id, cmd, k):
         self._env_map['{{'+k+'}}'] = self.from_stor(k)
+
+
+    def exec_sleep(self, id, cmd, seconds_str):
+        time.sleep(float(seconds_str))
+
+    def exec_refresh(self, id, cmd):
+        self._driver.refresh()
+
+
+    #todo
+    def exec_press_return(self, id, cmd, msg=None):
+        logging.info("Waiting for interactive PRESS RETURN by user...")
+        if msg is not None:
+            print(msg)
+        print("Press RETURN to continue")
+        input()
+        logging.info("Waiting for interactive PRESS RETURN by user... USER PRESSED RETURN")
+
+
+    #todo
+    def exec_relget(self, id, cmd, urlpath):
+        pass
+
+
+    #todo
+    def exec_stor_attribute(self, id, cmd, target_xpath, k):
+        pass
+
+
+    #todo
+    def exec_stor_get_i(self, id, cmd, name, k):
+        pass
+
+
+    #todo
+    def exec_clear_type(self, id, cmd, target_xpath, typing_content):
+        pass
+
+    #todo
+    def exec_click(self, id, cmd, target_xpath):
+        pass
+
+
+    #todo
+    def exec_click_text(self, id, cmd, target_xpath, txt):
+        pass
 
 
     def mkfilename_screenshot(self, mode):
